@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 export function Header({ isLogin }){
     return (
         <header className={`w-full ${!isLogin && "bg-black/70"} py-6`}>
@@ -11,4 +13,8 @@ export function Header({ isLogin }){
         </header>
         
     )
+}
+
+Header.propTypes = {
+    isLogin: PropTypes.bool.isRequired
 }

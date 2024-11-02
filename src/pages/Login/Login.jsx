@@ -64,8 +64,8 @@ export function Login() {
     }
 
     return (
-        <div className="bg-black md:bg-login-background bg-no-repeat flex f bg-cover flex-col h-full items-center">
-            <div className="w-full flex flex-col items-center bg-black/50">
+        <div className="bg-black md:bg-login-background flex bg-cover flex-col min-h-screen items-center">
+            <div className="flex-grow w-full h-full flex flex-col items-center bg-black/50">
                 <Header isLogin={true} />
                 <form className="w-full md:w-1/2 p-8 md:px-20 md:py-12 flex flex-col gap-4 bg-black/70 rounded-xl mb-16" onSubmit={handleSubmit}>
                     <h1 className="text-white font-bold text-3xl">Entrar</h1>

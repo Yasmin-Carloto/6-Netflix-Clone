@@ -1,8 +1,8 @@
-import { IoLanguage } from "react-icons/io5";
+import PropTypes from "prop-types"
 
 export function Footer({ selectedLanguage, setSelectedLanguage, languagesOptions }) {
     return (
-        <footer className="md:bg-gradient-to-b md:from-black/80 md:to-black/100 w-full border-t-2 border-gray-400 md:border-none p-4">
+        <footer className="md:bg-gradient-to-b md:from-black/80 md:to-black/100 w-full border-t-2 border-gray-400 md:border-none p-4 mt-auto">
             <div className="text-base text-gray-400 flex flex-col justify-center gap-6 p-4 md:w-4/5 md:p-12">
                 <h1 className="">Dúvidas? Ligue <span className="cursor-pointer hover:underline">0800 591 2876</span></h1>
                 <nav className="flex underline justify-between gap-6">
@@ -66,4 +66,10 @@ export function Footer({ selectedLanguage, setSelectedLanguage, languagesOptions
             </div>
         </footer>
     )
+}
+
+Footer.propTypes = {
+    selectedLanguage: PropTypes.string.isRequired,
+    setSelectedLanguage: PropTypes.func.isRequired,
+    languagesOptions: PropTypes.array.isRequired
 }
