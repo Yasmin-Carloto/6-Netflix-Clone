@@ -4,7 +4,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 export const TokenContext = createContext()
 export const TokenProvider = (({ children }) => {
     const [token, setToken] = useState(() => localStorage.getItem("netflix-access-token") || "")
-    const [rememberMe, setRememberMe] = useState(false)
+    const [rememberMe, setRememberMe] = useState(() => localStorage.getItem("remember-me-netfix") || "false")
 
     useEffect(() => {
         if(token){
@@ -12,19 +12,24 @@ export const TokenProvider = (({ children }) => {
         } else {
             localStorage.removeItem("netflix-access-token")
         }
+    }, [token])
 
-       function handleUncheckedBox() {
-            localStorage.removeItem("netflix-access-token")
-       }
+    useEffect(() => {
+        localStorage.setItem("remember-me-netfix", rememberMe);
+    }, [rememberMe])
 
-       if(!rememberMe){
-            window.addEventListener("beforeunload", handleUncheckedBox)
-
-            return () => {
-                window.removeEventListener("beforeunload", handleUncheckedBox)
+    useEffect(() => {
+        const handleBeforeUnload = () => {
+            if (!JSON.parse(rememberMe)) {
+                setToken("")
             }
-       }
-    }, [token, rememberMe])
+        }
+
+        window.addEventListener("beforeunload", handleBeforeUnload);
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        }
+    }, [rememberMe])
 
     return (
         <TokenContext.Provider value={{ token, setToken, rememberMe, setRememberMe}}>

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export function Login() {
     const [showRecaptchaInfo, setShowRecaptchInfo] = useState(false)
     const [selectedLanguage, setSelectedLanguage] = useState("Portuguese")
-    const { setToken, setRememberMe } = useToken()
+    const { setToken, rememberMe, setRememberMe } = useToken()
     const navigate = useNavigate()
     const languagesOptions = ["Português", "English"]
 
@@ -53,13 +53,14 @@ export function Login() {
 
         if(Object.keys(allErrors).length === 0){
             setErrors({})
-
             const generatedToken = createWT(formFieldsData)
             setToken(generatedToken)
             navigate("/")
         }else{
             setErrors(allErrors)
         }
+
+        console.log(rememberMe)
     }
 
     return (
