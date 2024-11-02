@@ -2,11 +2,15 @@ import { useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import { MdOutlineCancel } from "react-icons/md";
+import { useToken } from "../../contexts/TokenContext";
+import { createWT } from "../../api/Login/createJWT";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
     const [showRecaptchaInfo, setShowRecaptchInfo] = useState(false)
     const [selectedLanguage, setSelectedLanguage] = useState("Portuguese")
-    const [rememberMe, setRememberMe] = useState(false)
+    const { setToken, setRememberMe } = useToken()
+    const navigate = useNavigate()
     const languagesOptions = ["Português", "English"]
 
     const [formFieldsData, setFormFieldsData] = useState({
@@ -14,7 +18,6 @@ export function Login() {
         password: "",
     })
     const [errors, setErrors] = useState({})
-    const [submit, setSubmit] = useState()
 
     function validate() {
         const allErrors = {}
@@ -49,11 +52,12 @@ export function Login() {
         const allErrors = validate()
 
         if(Object.keys(allErrors).length === 0){
-            setSubmit(true)
             setErrors({})
-            console.log(rememberMe);
+
+            const generatedToken = createWT(formFieldsData)
+            setToken(generatedToken)
+            navigate("/")
         }else{
-            setSubmit(false)
             setErrors(allErrors)
         }
     }

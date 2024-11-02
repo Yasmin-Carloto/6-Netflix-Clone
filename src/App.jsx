@@ -1,11 +1,26 @@
+import { createBrowserRouter } from 'react-router-dom'
 import { Login } from './pages/Login/Login'
+import { RedirectRoute } from './components/RedirectRoute/RedirectRoute'
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute'
+import { SelectProfilePage } from './pages/SelectProfilePage/SelectProfilePage'
 
-function App() {
-  return (
-    <div className='h-full'>
-     <Login />
-    </div>
-  )
-}
+export const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: (
+      <RedirectRoute>
+        <Login />
+      </RedirectRoute>
+    )
+  }, 
+  {
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <SelectProfilePage />
+      </ProtectedRoute>
+    )
+  }
+])
 
-export default App
+export default router
