@@ -2,7 +2,7 @@ import { Header } from "../../components/Header/Header";
 
 export function Home() {
     return (
-        <div>
+        <div className="">
             <Header isLogin={false} />
         </div>
     )
