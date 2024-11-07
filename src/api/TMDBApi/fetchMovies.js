@@ -20,7 +20,7 @@ export async function getMovies(pageNumber){
     }catch(error){
         return {
             status: 404,
-            message: error
+            error: error
         }
     }
 }
@@ -36,10 +36,14 @@ async function genericFetch(URL) {
                 }
             }
         )
+        return {
+            status: 200,
+            response: response.data.results
+        }
     } catch (error) {
         return {
             status: 404,
-            message: error
+            error: error
         }
     }
 } 
