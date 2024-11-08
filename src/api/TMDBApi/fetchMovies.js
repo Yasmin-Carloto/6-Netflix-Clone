@@ -5,7 +5,7 @@ const baseURL = "https://api.themoviedb.org/3"
 export async function getMovies(pageNumber){
     try {
         const response = await axios.get(
-            `${baseURL}/person/popular?language=pt-BR&page=${pageNumber}`,
+            `${baseURL}/movie/popular?language=pt-BR&page=${pageNumber}`,
             {
                 headers: {
                     Accept: "application/json",

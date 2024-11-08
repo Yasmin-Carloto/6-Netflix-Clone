@@ -26,7 +26,7 @@ export default {
         transformDown: "transformDown 0.5s ease-in-out forwards"
       },
       backgroundImage: {
-        'login-background': "url('/src/assets/images/background.jpg')"
+        'login-background': "url('/src/assets/images/background.jpg')",
       }
     },
   },
