@@ -1,45 +1,14 @@
-import { useEffect, useState } from "react";
-import { getMovies } from "../../api/TMDBApi/fetchMovies";
-import { Loading } from "../Loading/Loading";
+import PropTypes from "prop-types";
 import { IoMdPlay } from "react-icons/io";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 
-export function Banner() {
-    const [currentMovie, setCurrentmovie] = useState()
-    useEffect(() => {
-        async function fetchMovie() {
-            const pageNumber = Math.floor(Math.random() * (10 - 1 + 1)) + 1
-            const responseMovies = await getMovies(pageNumber)
-            
-            if(responseMovies.error){
-                setCurrentmovie()
-            } else {
-                const choosenMovie = Math.floor(Math.random() * (10 - 1 + 1)) + 1
-                setCurrentmovie(responseMovies.response[choosenMovie])
-            }
-        }
-
-        fetchMovie()
-    }, [])
-
-    if(!currentMovie){
-        return <Loading />
-    }
-    
-    const posterUrl = currentMovie.poster_path 
-        ? `https://image.tmdb.org/t/p/original${currentMovie.poster_path}` 
-        : null;
-
-
+export function Banner({ currentMovie }) {
     return (
         <section 
-            className="hidden text-white md:flex flex-col bg-no-repeat bg-cover w-full h-full"
-            style={{ 
-                backgroundImage: posterUrl ? `url(${posterUrl})` : 'none',
-            }}
+            className="hidden text-white md:flex flex-col bg-contain w-full h-lvh"
         >
-            <div className="w-full h-full bg-gradient-to-r from-black/100 to-transparent flex flex-col items-start justify-around p-6 gap-8">
-                <div className="flex flex-col gap-2">
+            <div className="w-full h-full flex flex-col items-start justify-center p-8 gap-2">
+                <div className="flex flex-col gap-2 w-2/3">
                     <h1 className="text-5xl font-extrabold">{currentMovie.title}</h1>            
                     <p className="w-1/2">{currentMovie.overview}</p>    
                 </div>
@@ -57,4 +26,8 @@ export function Banner() {
             </div>
         </section>
     )
+}
+
+Banner.propTypes = {
+    currentMovie: PropTypes.object.isRequired,
 }

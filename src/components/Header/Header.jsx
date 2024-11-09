@@ -6,7 +6,7 @@ import { MdArrowDropDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
-export function Header({ isLogin }){
+export function Header({ isLogin, onScroll }){
     const navigationOptions = ["Séries", "Filmes", "Bombando", "Minha lista", "Navegar por idiomas"]
     const [searchInput, setSearchInput] = useState(false)
     const [mouseEntered, setMouseEntered] = useState(false)
@@ -19,7 +19,7 @@ export function Header({ isLogin }){
     }, [searchInput])
 
     return (
-        <header className={`w-full bg-none ${isLogin ? "py-6" : "p-4"} bg-none`}>
+        <header className={`w-full ${isLogin ? "py-6" : "p-4"} ${onScroll && "bg-zinc-900"} fixed`}>
             {isLogin ? (
                 <div className="w-2/4 md:w-1/6 md:ml-16">
                     <img src="/src/assets/images/logo.png" className="contain"/>
@@ -86,5 +86,6 @@ export function Header({ isLogin }){
 }
 
 Header.propTypes = {
-    isLogin: PropTypes.bool.isRequired
+    isLogin: PropTypes.bool.isRequired,
+    onScroll: PropTypes.bool.isRequired
 }
