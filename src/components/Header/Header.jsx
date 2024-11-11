@@ -19,7 +19,7 @@ export function Header({ isLogin, onScroll }){
     }, [searchInput])
 
     return (
-        <header className={`w-full ${isLogin ? "py-6" : "p-4"} ${onScroll && "bg-zinc-900"} fixed`}>
+        <header className={`w-full ${isLogin ? "py-6" : "p-4"} ${onScroll && "bg-zinc-900"} fixed ease-in-out duration-500 bg-black`}>
             {isLogin ? (
                 <div className="w-2/4 md:w-1/6 md:ml-16">
                     <img src="/src/assets/images/logo.png" className="contain"/>
@@ -28,7 +28,7 @@ export function Header({ isLogin, onScroll }){
                 <div className="flex justify-between w-full gap-4">
                     <nav className="text-white md:flex justify-center items-center">
                         <div className="flex justify-start items-center">
-                            <IoMdMenu className="text-white md:hidden w-56" size={100}  />
+                            <IoMdMenu className="text-white md:hidden w-56" size={48}  />
 
                             <img src="/src/assets/images/logo.png" className="w-48"/>
                         </div>

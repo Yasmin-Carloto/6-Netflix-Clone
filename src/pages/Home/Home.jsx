@@ -21,6 +21,17 @@ export function Home() {
         }
 
         fetchMovie()
+
+        function handleScroll() {
+            if(window.scrollY > 50){
+                setNavOnScroll(true)
+            }else{
+                setNavOnScroll(false)
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
     }, [])
     function changeNavOnScroll() {
         setNavOnScroll(!navOnScroll)
@@ -36,18 +47,17 @@ export function Home() {
         : null;
 
     return (
-        <div className="">
+        <div className="bg-zinc-900" onScrollCapture={() => changeNavOnScroll()}>
             <div 
                 className="bg-contain"     
                 style={{ backgroundImage: posterUrl ? `url(${posterUrl})` : 'none',}}
             >
-                <div className="bg-gradient-to-r from-black/100 to-transparent" onScroll={changeNavOnScroll}>
-                    <Header isLogin={false} />
+                <div className="bg-gradient-to-r from-black/100 to-transparent">
+                    <Header isLogin={false} onScroll={navOnScroll} />
                     <Banner currentMovie={currentMovie} onScroll={navOnScroll} />
                 </div>
             </div>
 
-            <h1 className="h-screen">teste</h1>
         </div>
     )
 }
