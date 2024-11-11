@@ -7,7 +7,7 @@ export function Banner({ currentMovie }) {
         <section 
             className="hidden text-white md:flex flex-col bg-contain w-full h-lvh"
         >
-            <div className="w-full h-full flex flex-col items-start justify-center p-8 gap-2">
+            <div className="w-full h-full flex flex-col items-start justify-center p-8 gap-8">
                 <div className="flex flex-col gap-2 w-2/3">
                     <h1 className="text-5xl font-extrabold">{currentMovie.title}</h1>            
                     <p className="w-1/2">{currentMovie.overview}</p>    
