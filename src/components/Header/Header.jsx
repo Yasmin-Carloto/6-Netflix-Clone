@@ -19,7 +19,7 @@ export function Header({ isLogin, onScroll }){
     }, [searchInput])
 
     return (
-        <header className={`w-full ${isLogin ? "py-6" : "p-4"} ${onScroll && "bg-zinc-900"} fixed ease-in-out duration-500 bg-black`}>
+        <header className={`w-full ${isLogin ? "py-6" : "p-4"} ${onScroll ? "bg-zinc-900" : "md:bg-transparent"} fixed ease-in-out duration-500 z-50 bg-zinc-900`}>
             {isLogin ? (
                 <div className="w-2/4 md:w-1/6 md:ml-16">
                     <img src="/src/assets/images/logo.png" className="contain"/>
