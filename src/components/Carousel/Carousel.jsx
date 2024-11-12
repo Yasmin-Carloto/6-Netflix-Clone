@@ -52,7 +52,7 @@ export function Carousel({ items }) {
                     <div key={contentItem.poster_path || index} className="w-1/5 p-2">
                         <img 
                             src={`https://image.tmdb.org/t/p/original${contentItem.poster_path}`} 
-                            className="w-full h-auto object-cover rounded-md" 
+                            className="w-full h-auto object-cover rounded-md cursor-pointer hover:scale-110 duration-200 hover:rounded-md hover:shadow-2xl hover:shadow-black" 
                         />
                     </div>
                 ))}
