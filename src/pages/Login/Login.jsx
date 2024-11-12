@@ -122,7 +122,7 @@ export function Login() {
                         </div>
                     </div>
                 </form>
-                <Footer selectedLanguage={selectedLanguage} setSelectedLanguage={setSelectedLanguage} languagesOptions={languagesOptions} />
+                <Footer selectedLanguage={selectedLanguage} setSelectedLanguage={setSelectedLanguage} languagesOptions={languagesOptions} isLogin={true} />
             </div>
         </div>
     )

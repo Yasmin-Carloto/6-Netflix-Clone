@@ -4,6 +4,7 @@ import { Header } from "../../components/Header/Header";
 import { getHomeItems, getMovies } from "../../api/TMDBApi/fetchMovies";
 import { Loading } from "../../components/Loading/Loading";
 import { Carousel } from "../../components/Carousel/Carousel";
+import { Footer } from "../../components/Footer/Footer";
 
 export function Home() {
     const [navOnScroll, setNavOnScroll] = useState(false)
@@ -74,11 +75,12 @@ export function Home() {
                     <Banner currentMovie={currentMovie} onScroll={navOnScroll} />
                 </div>
             </div>
-            <div className="first:pt-20 md:first:pt-0">
+            <div className="pt-16 md:pt-0">
                 {homeLists.map((list) => (
                     <Carousel key={list.heading} items={list} />
                 ))}
             </div>
+            <Footer isLogin={false} />
         </div>
     )
 }
