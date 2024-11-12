@@ -6,7 +6,7 @@ import { FaYoutube } from "react-icons/fa"
 
 export function Footer({ selectedLanguage, setSelectedLanguage, languagesOptions, isLogin }) {
     return (
-        <footer className="md:bg-gradient-to-b md:from-black/80 md:to-black/100 w-full border-t-2 border-gray-400 md:border-none p-4 mt-auto">
+        <footer className={`md:bg-gradient-to-b ${isLogin ? "md:from-black/80 md:to-black/100" : "bg-zinc-900"} w-full border-t-2 border-gray-400 md:border-none p-4 mt-auto`}>
             {isLogin ? (
                 <div className="text-base text-gray-400 flex flex-col justify-center gap-6 p-4 md:w-4/5 md:p-12">
                     <h1 className="">Dúvidas? Ligue <span className="cursor-pointer hover:underline">0800 591 2876</span></h1>
