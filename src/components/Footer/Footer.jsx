@@ -73,69 +73,69 @@ export function Footer({ selectedLanguage, setSelectedLanguage, languagesOptions
                 <div className="text-white flex flex-col gap-8 p-4 md:p-24">
                     <div className="flex flex-col gap-4">
                         <div className="flex justify-start text-xl gap-8">
-                            <FaFacebookF />
-                            <FaInstagram />
-                            <FaTwitter />
-                            <FaYoutube />
+                            <FaFacebookF className="cursor-pointer hover:text-gray-300" />
+                            <FaInstagram className="cursor-pointer hover:text-gray-300" />
+                            <FaTwitter className="cursor-pointer hover:text-gray-300" />
+                            <FaYoutube className="cursor-pointer hover:text-gray-300" />
                         </div>
 
                         <ul className="flex flex-wrap text-sm text-gray-400">
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Audiodescrição
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2  hover:text-gray-200">
                                 <a href="">
                                     Central de Ajuda
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Cartão pré-pago
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Imprensa
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Relações com investidores
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Carreiras
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Termos de Uso
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Privacidade
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Avisos legais
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Preferências de cookies
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Informações corporativas
                                 </a>
                             </li>
-                            <li className="w-1/2 md:w-1/4 p-2">
+                            <li className="w-1/2 md:w-1/4 p-2 hover:text-gray-200">
                                 <a href="">
                                     Informações corporativas
                                 </a>
