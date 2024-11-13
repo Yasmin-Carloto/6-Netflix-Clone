@@ -56,7 +56,7 @@ export async function getHomeItems(pageNumber) {
         },
         {
             title: "Séries para Maratonar",
-            items: await genericFetch(`/discover/tv?include_adult=false&include_null_first_air_dates=false&language=pt-BR&page=${pageNumber}&sort_by=popularity.asc`)
+            items: await genericFetch(`/trending/tv/day?language=pt-BR`)
         },
         {
             title: "Programas Infantis",
@@ -71,12 +71,12 @@ export async function getHomeItems(pageNumber) {
             items: await genericFetch(`/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${pageNumber}&sort_by=popularity.desc&with_genres=27`)
         },
         {
-            title: "Drama",
-            items: await genericFetch(`/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${pageNumber}&sort_by=popularity.desc&with_genres=18`)
+            title: "Filmes de ação",
+            items: await genericFetch(`/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${pageNumber}&sort_by=popularity.desc&with_genres=28`)
         }, 
         {
-            title: "Filmes românticos",
-            items:  await genericFetch(`/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${pageNumber}&sort_by=popularity.desc&with_genres=10749`)
+            title: "Para toda a família",
+            items:  await genericFetch(`/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=${pageNumber}&sort_by=popularity.desc&with_genres=10751`)
         },
         {
             title: "Comédia",
