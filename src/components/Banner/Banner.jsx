@@ -1,8 +1,16 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { IoMdPlay } from "react-icons/io";
 import { IoIosInformationCircleOutline } from "react-icons/io";
+import { Modal } from "../Modal/Modal";
 
 export function Banner({ currentMovie }) {
+    const [open, setOpen] = useState(false)
+
+    function toggleOpen(){
+        setOpen(!open)
+    }
+
     return (
         <section 
             className="hidden text-white md:flex flex-col bg-contain w-full h-lvh"
@@ -14,16 +22,24 @@ export function Banner({ currentMovie }) {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    <button className="flex items-center justify-center bg-white p-2 rounded text-black text-xl gap-2">
+                    <button 
+                        className="flex items-center justify-center bg-white hover:bg-gray-300 p-2 md:p-2 rounded text-black text-xl md:text-lg gap-2"
+                        onClick={() => toggleOpen()}
+                    >
                         <IoMdPlay />
                         Assistir
                     </button>
-                    <button className="flex items-center justify-center bg-white/60 p-2 rounded text-black text-xl gap-2">
+                    <button 
+                        className="flex items-center justify-center bg-white/60 hover:bg-white/40 p-2 rounded text-black text-xl md:text-lg gap-2"
+                        onClick={() => toggleOpen()}
+                    >
                         <IoIosInformationCircleOutline />
                         Mais informações
                     </button>
+                </div>
             </div>
-            </div>
+
+            <Modal clickedMovie={currentMovie} isOpen={open} setIsOpen={toggleOpen} />
         </section>
     )
 }
