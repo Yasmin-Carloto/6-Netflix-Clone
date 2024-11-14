@@ -62,6 +62,8 @@ export function Home() {
         ? `https://image.tmdb.org/t/p/original${currentMovie.poster_path}` 
         : null;
 
+        console.log(process.env.VITE_APP_TMDB_API_KEY)
+
     return (
         <div className="bg-zinc-900 relative z-40" onScrollCapture={() => changeNavOnScroll()}>
             <div 

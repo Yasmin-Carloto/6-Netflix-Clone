@@ -1,4 +1,5 @@
 import PropTypes from "prop-types"
+import logo from "../../assets/images/logo.png"
 import { IoMdMenu } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { IoMdNotificationsOutline } from "react-icons/io";
@@ -47,7 +48,7 @@ export function Header({ isLogin, onScroll }){
         <header className={`w-full ${isLogin ? "py-6 bg-black" : "p-4"} ${onScroll ? "bg-zinc-900" : "md:bg-transparent"} fixed ease-in-out duration-500 z-50`}>
             {isLogin ? (
                 <div className="w-2/4 md:w-1/6 md:ml-16">
-                    <img src="/src/assets/images/logo.png" className="contain"/>
+                    <img src={logo} className="contain"/>
                 </div>
             ) : (
                 <div className="flex justify-between w-full gap-4">
@@ -56,7 +57,7 @@ export function Header({ isLogin, onScroll }){
                             <IoMdMenu className="text-white md:hidden w-56 text-start" size={48}  />
 
                             <img 
-                                src="/src/assets/images/logo.png" 
+                                src={logo}
                                 className="w-48 text-start"
                             />
                         </div>

@@ -1,5 +1,6 @@
 import { FaPlusCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import profileImage from "../../assets/images/profile-image.jpg" 
 
 export function SelectProfilePage() {
     return (
@@ -10,7 +11,7 @@ export function SelectProfilePage() {
                     to={"browse"}
                     className="flex flex-col justify-center items-center gap-2 hover:text-white group"
                 >
-                    <img src="/src/assets/images/profile-image.jpg" alt="" className="rounded w-28 peer border-transparent border-2 group-hover:border-white
+                    <img src={profileImage} alt="" className="rounded w-28 peer border-transparent border-2 group-hover:border-white
                     " />
                     <p className="">Perfil Número 1</p>
                 </Link>
