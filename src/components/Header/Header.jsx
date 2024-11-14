@@ -76,7 +76,7 @@ export function Header({ isLogin, onScroll }){
                     </div>
 
                     <div className="flex justify-end items-center md:hidden">
-                        <input type="search" placeholder="Buscar" className="px-2 p-1 w-3/4 text-2xl text-white bg-zinc-800 border border-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:rounded" style={{ appearance: "none", WebkitAppearance: "none" }} />
+                        <input type="search" placeholder="Buscar" className="md:px-2 p-1 w-3/4 text-2xl text-white bg-zinc-800 border border-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:rounded" style={{ appearance: "none", WebkitAppearance: "none" }} />
                     </div>
                 </div>
             )}

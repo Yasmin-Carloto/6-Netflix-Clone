@@ -34,7 +34,6 @@ export function Home() {
                 setHomeList([])
             }else{
                 setHomeList(responseMovies)
-                console.log(homeLists)
             }
         }
 
@@ -53,7 +52,6 @@ export function Home() {
     }, [])
     function changeNavOnScroll() {
         setNavOnScroll(!navOnScroll)
-        console.log(navOnScroll)
     }
 
     if(!currentMovie){
@@ -77,7 +75,7 @@ export function Home() {
             </div>
             <div className="pt-16 md:pt-0">
                 {homeLists.map((list) => (
-                    <Carousel key={list.heading} items={list} />
+                    <Carousel key={list.title} items={list} />
                 ))}
             </div>
             <Footer isLogin={false} />

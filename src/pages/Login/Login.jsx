@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export function Login() {
     const [showRecaptchaInfo, setShowRecaptchInfo] = useState(false)
     const [selectedLanguage, setSelectedLanguage] = useState("Portuguese")
-    const { setToken, rememberMe, setRememberMe } = useToken()
+    const { setToken, setRememberMe } = useToken()
     const navigate = useNavigate()
     const languagesOptions = ["Português", "English"]
 
@@ -59,8 +59,6 @@ export function Login() {
         }else{
             setErrors(allErrors)
         }
-
-        console.log(rememberMe)
     }
 
     return (
