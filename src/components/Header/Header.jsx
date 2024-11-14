@@ -5,12 +5,37 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { MdArrowDropDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { searchMultiContent } from "../../api/TMDBApi/fetchMovies";
+import { Modal } from "../Modal/Modal";
 
 export function Header({ isLogin, onScroll }){
     const navigationOptions = ["Séries", "Filmes", "Bombando", "Minha lista", "Navegar por idiomas"]
     const [searchInput, setSearchInput] = useState(false)
     const [mouseEntered, setMouseEntered] = useState(false)
+    const [searchValue, setSearchValue] = useState("")
+    const [searchContentResponse, setSearchContentResponse] = useState([])
+    const [currentContent, setCurrentContent] = useState()
+    const [modalOpen, setModalOpen] = useState(false)
     const searchRef = useRef(null)
+
+    function toggleOpenModal() {
+        setModalOpen(!modalOpen)
+    }
+
+    async function onSearchInputChange(event) {
+        const { value } = event.target
+        if(value.length > 2){
+            setSearchValue(value)
+            const responseToSearch = await searchMultiContent(searchValue)
+            if(responseToSearch.error){
+                setSearchContentResponse([])
+            }else{
+                setSearchContentResponse(responseToSearch.response)
+            }
+        }else{
+            setSearchContentResponse([])
+        }
+    }
 
     useEffect(() => {
         if(searchInput && searchRef.current){
@@ -26,11 +51,14 @@ export function Header({ isLogin, onScroll }){
                 </div>
             ) : (
                 <div className="flex justify-between w-full gap-4">
-                    <nav className="text-white md:flex justify-start items-start">
+                    <nav className="w-full text-white md:flex justify-start items-start">
                         <div className="flex justify-start items-center">
                             <IoMdMenu className="text-white md:hidden w-56 text-start" size={48}  />
 
-                            <img src="/src/assets/images/logo.png" className="w-48 text-start"/>
+                            <img 
+                                src="/src/assets/images/logo.png" 
+                                className="w-48 text-start"
+                            />
                         </div>
 
                         <ul className="hidden md:flex gap-4 justify-center items-center">
@@ -45,13 +73,41 @@ export function Header({ isLogin, onScroll }){
                         </ul>
                     </nav>
 
-                    <div className="text-white hidden md:flex gap-4 items-center justify-end">
-                        <div className="flex items-center gap-2">
-                            <div className={`items-center bg-zinc-800 p-1 gap-2 border border-white ${searchInput ? "flex" : "hidden"} animate-slideIn`} onBlur={() => setSearchInput(false)}>
-                                <CiSearch size={20} />
-                                <input ref={searchRef} type="search" placeholder="Títulos, gente e gêneros" className="w-full bg-zinc-800 outline-none" style={{ appearance: "none", WebkitAppearance: "none" }} />
+                    <div className="text-white hidden md:flex items-start gap-4">
+                        <div className="flex flex-col items-end justify-center">
+                            <div className="flex items-center gap-2">
+                                <div className={`items-center bg-zinc-800 p-1 gap-2 border border-white ${searchInput ? "flex" : "hidden"} animate-slideIn`} onBlur={() => setSearchInput(false)}>
+                                    <CiSearch size={20} />
+                                    <input 
+                                        ref={searchRef} 
+                                        type="search" 
+                                        placeholder="Títulos, gente e gêneros" 
+                                        className="w-full bg-zinc-800 outline-none" 
+                                        style={{ appearance: "none", WebkitAppearance: "none" }} 
+                                        onChange={(event) => onSearchInputChange(event)}
+                                    />
+                                </div>
+                                <CiSearch size={20} onClick={() => setSearchInput(true)} className={`cursor-pointer ${searchInput ? "hidden" : "flex"}`} />
                             </div>
-                            <CiSearch size={20} onClick={() => setSearchInput(true)} className={`cursor-pointer ${searchInput ? "hidden" : "flex"}`} />
+
+                            {searchContentResponse.length != 0 && (
+                                <div className="w-full bg-zinc-900 p-2 my-4 text-gray-300 rounded-md shadow-2xl text-base flex flex-col h-52 overflow-y-auto">
+                                    {searchContentResponse.map((content) => (
+                                        <div 
+                                            className="w-full flex items-center justify-start text-center p-2 gap-2 cursor-pointer border-b border-b-red-700" 
+                                            key={content.id}
+                                            onClick={() => {
+                                                toggleOpenModal()
+                                                setCurrentContent(content)
+                                                setSearchContentResponse([])
+                                            }}
+                                        >
+                                            <img className="w-24" src={`https://image.tmdb.org/t/p/original${content.poster_path}`} alt="" />
+                                            <span className="">{content.name || content.original_title}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         <div>
@@ -75,9 +131,35 @@ export function Header({ isLogin, onScroll }){
                         </div>
                     </div>
 
-                    <div className="flex justify-end items-center md:hidden">
-                        <input type="search" placeholder="Buscar" className="md:px-2 p-1 w-3/4 text-2xl text-white bg-zinc-800 border border-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:rounded" style={{ appearance: "none", WebkitAppearance: "none" }} />
+                    <div className="md:hidden">
+                        <input 
+                            type="search" 
+                            placeholder="Buscar" 
+                            className="md:px-2 p-1 w-3/4 text-2xl text-white bg-zinc-800 border border-white  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:rounded" 
+                            style={{ appearance: "none", WebkitAppearance: "none" }}
+                            onChange={(event) => onSearchInputChange(event)} 
+                        />
+                        {searchContentResponse.length != 0 && (
+                            <div className="w-full bg-zinc-900 text-gray-300 rounded-md shadow-2xl text-xl flex flex-col h-52 overflow-y-auto items-start">
+                                {searchContentResponse.map((content) => (
+                                    <div 
+                                        className="w-full flex flex-col p-2 gap-2 cursor-pointer border-b border-b-red-700" 
+                                        key={content.id}
+                                        onClick={() => {
+                                            toggleOpenModal()
+                                            setCurrentContent(content)
+                                        }}
+                                    >
+                                        <img className="w-24" src={`https://image.tmdb.org/t/p/original${content.poster_path}`} alt={content.name || content.original_title} />
+                                        <span className="">{content.name || content.original_title}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
+                    {currentContent && (
+                        <Modal clickedContent={currentContent} isOpen={modalOpen} setIsOpen={toggleOpenModal} />
+                    )}
                 </div>
             )}
         </header>

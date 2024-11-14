@@ -84,3 +84,26 @@ export async function getHomeItems(pageNumber) {
         }
     ]
 }
+
+export async function searchMultiContent(searchValue) {
+    try {
+        const response = await axios.get(
+            `${baseURL}/search/multi?query=${searchValue}&include_adult=false&language=pt-br&page=1`, 
+            {
+                headers: {
+                    Accept: "application/json",
+                    Authorization: `Bearer ${import.meta.env.VITE_APP_TMDB_API_KEY}`
+                }
+            }
+        )
+        return {
+            status: 200,
+            response: response.data.results
+        }
+    } catch (error) {
+        return {
+            status: 404,
+            error: error
+        }
+    }
+}

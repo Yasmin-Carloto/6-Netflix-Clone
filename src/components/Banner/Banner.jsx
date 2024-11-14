@@ -39,7 +39,7 @@ export function Banner({ currentMovie }) {
                 </div>
             </div>
 
-            <Modal clickedMovie={currentMovie} isOpen={open} setIsOpen={toggleOpen} />
+            <Modal clickedContent={currentMovie} isOpen={open} setIsOpen={toggleOpen} />
         </section>
     )
 }

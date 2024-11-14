@@ -78,7 +78,7 @@ export function Carousel({ items }) {
             </div>
 
             {currentMovie &&
-                <Modal isOpen={open} setIsOpen={toggleIsOpen} clickedMovie={currentMovie} />
+                <Modal isOpen={open} setIsOpen={toggleIsOpen} clickedContent={currentMovie} />
             }
         </div>
     )
