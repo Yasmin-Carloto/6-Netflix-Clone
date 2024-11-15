@@ -1,5 +1,6 @@
 import PropTypes from "prop-types"
 import logo from "../../assets/images/logo.png"
+import profile from "../../assets/images/profile-image.jpg"
 import { IoMdMenu } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { IoMdNotificationsOutline } from "react-icons/io";
@@ -126,7 +127,7 @@ export function Header({ isLogin, onScroll }){
                                 onMouseEnter={() => setMouseEntered(true)}
                                 onMouseLeave={() => setMouseEntered(false)}
                             >
-                                <img src="/src/assets/images/profile-image.jpg" alt="" className="rounded w-10 peer border-transparent border-2 group-hover:border-white" />
+                                <img src={profile} alt="" className="rounded w-10 peer border-transparent border-2 group-hover:border-white" />
                                 <MdArrowDropDown className={`${mouseEntered ? "hover:animate-transformUp" : "hover:animate-transformDown"} transition-transform duration-500`} size={28} />
                             </Link>
                         </div>
