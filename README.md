@@ -1,5 +1,5 @@
 # Netflix Clone
-Este projeto é um clone interativo da interface da Netflix feito para a conclusão do projeto 06 do módulo de React da Trilha síncrona Fullstack Jr. da +PraTi.
+Este projeto é um clone interativo da interface da Netflix feito para a conclusão do projeto 04 do módulo de React da Trilha síncrona Fullstack Jr. da +PraTi.
 
 ## Objetivo do desenvolvimento desta aplicação 🎯
 Clonar a interface da Netflix para efeitos de aprendizado da biblioteca React e demais bibliotecas adjacentes.
